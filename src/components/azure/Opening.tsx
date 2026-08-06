@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+
 import flowerDesign from "@/assets/c.jpg";
+import lantern from "@/assets/l.png";
 
 
 export const TIDE_EVENT = "loom:open";
@@ -8,20 +10,26 @@ export const TIDE_EVENT = "loom:open";
 const OPEN_TIME = 4800;
 
 
+
 export function Opening(){
 
-const [open,setOpen]=useState(false);
-const [visible,setVisible]=useState(true);
+const [open,setOpen] = useState(false);
+const [visible,setVisible] = useState(true);
 
 
 
 function handleOpen(){
 
-if(open)return;
+if(open) return;
+
 
 setOpen(true);
 
-window.dispatchEvent(new Event("loom:music"));
+
+window.dispatchEvent(
+new Event("loom:music")
+);
+
 
 
 setTimeout(()=>{
@@ -29,7 +37,7 @@ setTimeout(()=>{
 setVisible(false);
 document.body.style.overflow="";
 
-},OPEN_TIME);
+},OPEN_TIME - 250);
 
 
 }
@@ -47,7 +55,9 @@ document.body.style.overflow="";
 
 }
 
+
 },[]);
+
 
 
 
@@ -55,22 +65,26 @@ return(
 
 <AnimatePresence>
 
+
 {
 
 visible &&
 
 <motion.div
 
+
 className="
 fixed
 inset-0
-z-[999]
+z-[9999]
 overflow-hidden
 cursor-pointer
-bg-[#4a0012]
+bg-transparent
 "
 
+
 onClick={handleOpen}
+
 
 
 exit={{
@@ -78,7 +92,7 @@ exit={{
 opacity:0,
 
 transition:{
-duration:1.5
+duration:.4
 }
 
 }}
@@ -87,10 +101,115 @@ duration:1.5
 
 
 
-{/* LEFT CURTAIN */}
+{/* ======================
+    HANGING LANTERNS
+====================== */}
+
+
+
+<motion.img
+
+src={lantern}
+
+alt="Luxury lantern"
+
+className="
+absolute
+z-50
+left-8
+top-0
+w-48
+md:w-72
+object-contain
+pointer-events-none
+"
+
+
+initial={{
+
+opacity:0,
+y:-40
+
+}}
+
+
+animate={{
+
+opacity:1,
+y:0
+
+}}
+
+
+transition={{
+
+duration:1.5,
+delay:.8
+
+}}
+
+/>
+
+
+
+
+
+<motion.img
+
+src={lantern}
+
+alt="Luxury lantern"
+
+className="
+absolute
+z-50
+right-8
+top-0
+w-32
+md:w-52
+object-contain
+pointer-events-none
+"
+
+
+initial={{
+
+opacity:0,
+y:-40
+
+}}
+
+
+animate={{
+
+opacity:1,
+y:0
+
+}}
+
+
+transition={{
+
+duration:1.5,
+delay:1
+
+}}
+
+/>
+
+
+
+
+
+
+{/* ======================
+        LEFT CURTAIN
+====================== */}
+
 
 
 <motion.div
+
 
 className="
 absolute
@@ -98,20 +217,30 @@ left-0
 top-0
 h-full
 w-1/2
-origin-left
+z-20
 "
 
+
 style={{
-perspective:"1200px"
+
+perspective:"1400px"
+
 }}
+
+
 
 animate={{
 
-scaleX:open?0:1,
 
-rotateY:open?-18:0
+x:open ? "-110%" : "0%",
+
+
+rotateY:open ? -12 : 0
+
 
 }}
+
+
 
 transition={{
 
@@ -121,10 +250,12 @@ ease:[0.76,0,0.24,1]
 
 }}
 
+
 >
 
 
 <LuxuryCurtain/>
+
 
 </motion.div>
 
@@ -132,10 +263,16 @@ ease:[0.76,0,0.24,1]
 
 
 
-{/* RIGHT CURTAIN */}
+
+
+{/* ======================
+        RIGHT CURTAIN
+====================== */}
+
 
 
 <motion.div
+
 
 className="
 absolute
@@ -143,20 +280,31 @@ right-0
 top-0
 h-full
 w-1/2
-origin-right
+z-20
 "
 
+
+
 style={{
-perspective:"1200px"
+
+perspective:"1400px"
+
 }}
+
+
 
 animate={{
 
-scaleX:open?0:1,
 
-rotateY:open?18:0
+x:open ? "110%" : "0%",
+
+
+rotateY:open ? 12 : 0
+
 
 }}
+
+
 
 transition={{
 
@@ -166,10 +314,12 @@ ease:[0.76,0,0.24,1]
 
 }}
 
+
 >
 
 
 <LuxuryCurtain/>
+
 
 </motion.div>
 
@@ -181,12 +331,10 @@ ease:[0.76,0,0.24,1]
 
 
 
+{/* ======================
+          CENTER TEXT
+====================== */}
 
-
-
-
-
-{/* CENTER TEXT */}
 
 
 
@@ -197,7 +345,9 @@ ease:[0.76,0,0.24,1]
 
 !open &&
 
+
 <motion.div
+
 
 className="
 absolute
@@ -207,22 +357,25 @@ flex
 flex-col
 items-center
 justify-center
-text-center
 px-6
+text-center
 text-[#f8e8cf]
 "
+
 
 
 exit={{
 
 opacity:0,
 
-filter:"blur(15px)",
+scale:1.08,
 
-scale:1.1,
+filter:"blur(14px)",
 
 transition:{
-duration:1.3
+
+duration:1
+
 }
 
 }}
@@ -233,26 +386,38 @@ duration:1.3
 
 <motion.p
 
+
 initial={{
+
 opacity:0,
-y:30
+y:25
+
 }}
+
 
 animate={{
+
 opacity:1,
 y:0
+
 }}
 
+
 transition={{
+
 duration:1.2,
 delay:.5
+
 }}
+
+
 
 className="
 tracking-[0.6em]
 text-sm
-text-[#d8b36a]
+text-[#e7c36a]
 "
+
 
 >
 
@@ -265,7 +430,10 @@ text-[#d8b36a]
 
 
 
+
+
 <motion.h1
+
 
 initial={{
 
@@ -275,6 +443,8 @@ filter:"blur(15px)"
 
 }}
 
+
+
 animate={{
 
 opacity:1,
@@ -283,6 +453,8 @@ filter:"blur(0)"
 
 }}
 
+
+
 transition={{
 
 duration:1.8,
@@ -290,13 +462,17 @@ delay:1
 
 }}
 
+
+
 className="
-mt-12
+mt-10
 font-serif
 text-5xl
 md:text-8xl
 leading-tight
 "
+
+
 
 >
 
@@ -307,7 +483,10 @@ Shaheen OP
 <br/>
 
 
-<span className="text-[#d8b36a] italic">
+<span className="
+text-[#e7c36a]
+italic
+">
 
 &
 
@@ -320,7 +499,11 @@ Shaheen OP
 Alshida
 
 
+
 </motion.h1>
+
+
+
 
 
 
@@ -329,22 +512,36 @@ Alshida
 
 <motion.p
 
+
 initial={{
+
 opacity:0
+
 }}
+
+
 
 animate={{
+
 opacity:1
+
 }}
+
 
 transition={{
-delay:2.5
+
+delay:2.4
+
 }}
 
+
+
 className="
-mt-12
+mt-10
 tracking-[0.45em]
+text-sm
 "
+
 
 >
 
@@ -358,31 +555,45 @@ tracking-[0.45em]
 
 
 
+
 <motion.p
 
+
 animate={{
+
 opacity:[
+
 0.3,
 1,
 0.3
+
 ]
+
 }}
 
+
+
 transition={{
+
 duration:2.5,
 repeat:Infinity
+
 }}
+
+
 
 className="
 mt-16
-text-xs
 tracking-[0.7em]
-text-[#d8b36a]
+text-xs
+text-[#e7c36a]
 "
+
 
 >
 
 ✦ TOUCH TO OPEN ✦
+
 
 </motion.p>
 
@@ -398,6 +609,8 @@ text-[#d8b36a]
 
 
 
+
+
 </motion.div>
 
 
@@ -417,12 +630,16 @@ text-[#d8b36a]
 
 
 
+
+
 function LuxuryCurtain(){
 
 
 return(
 
+
 <div
+
 
 className="
 relative
@@ -431,16 +648,23 @@ w-full
 overflow-hidden
 "
 
+
+
 style={{
 
 
 backgroundImage:`
 
 linear-gradient(
+
 90deg,
-rgba(90,0,20,.9),
-rgba(190,20,55,.45),
-rgba(90,0,20,.9)
+
+rgba(130,0,25,.95),
+
+rgba(210,25,65,.45),
+
+rgba(130,0,25,.95)
+
 ),
 
 url(${flowerDesign})
@@ -448,20 +672,23 @@ url(${flowerDesign})
 `,
 
 
+
 backgroundSize:"cover",
 
 backgroundPosition:"center",
 
 
+
 boxShadow:
-"inset 0 0 120px rgba(40,0,10,.8)"
+
+"inset 0 0 180px rgba(60,0,15,.7)"
 
 
 }}
 
+
+
 >
-
-
 
 
 
@@ -470,32 +697,42 @@ boxShadow:
 
 <div
 
+
 className="
 absolute
 inset-0
 "
 
+
 style={{
 
 
-background:`
+background:
 
+`
 repeating-linear-gradient(
 
 90deg,
 
-rgba(40,0,10,.6) 0px,
+rgba(80,0,15,.55),
 
-rgba(255,255,255,.15) 40px,
+rgba(255,255,255,.12) 35px,
 
-rgba(80,0,20,.55) 90px
+rgba(90,0,20,.55) 80px,
+
+rgba(255,255,255,.08) 120px
 
 )
 
-`
+`,
+
+
+opacity:.65
 
 
 }}
+
+
 
 />
 
@@ -504,49 +741,65 @@ rgba(80,0,20,.55) 90px
 
 
 
-
-{/* Gold fabric glow */}
+{/* Golden reflection */}
 
 
 <div
+
 
 className="
 absolute
 inset-0
 "
 
+
 style={{
+
 
 background:
 
-"linear-gradient(90deg,transparent,rgba(230,190,90,.3),transparent)"
+"linear-gradient(90deg,transparent,rgba(240,200,100,.35),transparent)",
+
+
+filter:"blur(45px)"
+
 
 }}
 
- />
+
+
+/>
 
 
 
 
 
 
-{/* Dark luxury edge */}
+{/* Luxury shadow edges */}
 
 
 <div
+
 
 className="
 absolute
 inset-0
 "
 
+
+
 style={{
+
 
 background:
 
-"radial-gradient(circle,transparent 35%,rgba(60,0,15,.75))"
+"radial-gradient(circle,transparent 35%,rgba(80,0,20,.7))"
+
+
 
 }}
+
+
 
 />
 
@@ -555,7 +808,7 @@ background:
 </div>
 
 
-)
 
+)
 
 }

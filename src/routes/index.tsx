@@ -9,8 +9,7 @@ import p2 from "@/assets/p2.jpg";
 import p3 from "@/assets/p3.jpg";
 import p4 from "@/assets/p4.jpg";
 import p5 from "@/assets/p5.jpg";
-import bridePortrait from "@/assets/bride-p.jpg";
-import groomPortrait from "@/assets/groom-p.jpg";
+
 
 import { Reveal } from "@/components/azure/Reveal";
 import { Atmosphere, LightLeak } from "@/components/azure/Atmosphere";
@@ -43,13 +42,17 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:title", content: "Shaheen OP & Alshida — 08.08.2026" },
-      {
-        property: "og:description",
+      
+   {
+  property: "og:description",
+  content:
+    "Shaheen OP & Alshida — A royal crimson wedding celebration on 08.08.2026.",
+},
        
-      },
+      
       {
   property: "og:image",
-  content: "/preview.jpg",
+  content: "https://redroyalwedding.vercel.app/real.jpg",
 },
 {
   property: "og:image:width",
