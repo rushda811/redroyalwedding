@@ -32,51 +32,103 @@ import { useParallax } from "@/components/azure/use-motion";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "Shaheen OP & Alshida" },
+ meta: [
+      {
+        title: "Shaheen OP & Alshida | Wedding Invitation",
+      },
+
       {
         name: "description",
         content:
-          "شاهين وألشيدا — Shaheen OP & Alshida invite you to their wedding on 8 August 2026. ",
+          "You are warmly invited to celebrate the royal wedding of Shaheen OP & Alshida. Join us for a timeless crimson and gold celebration filled with love, blessings and beautiful memories on 8 August 2026.",
       },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Shaheen OP & Alshida — 08.08.2026" },
-      
-   {
-  property: "og:description",
-  content:
-    "Shaheen OP & Alshida — A royal crimson wedding celebration on 08.08.2026.",
-},
-       
-      
+
       {
-  property: "og:image",
-  content: "https://redroyalwedding.vercel.app/real.jpg",
-},
-{
-  property: "og:image:width",
-  content: "1200",
-},
-{
-  property: "og:image:height",
-  content: "630",
-},
-{
-  property: "og:image:type",
-  content: "image/jpeg",
-},
-{
-  name: "twitter:image",
-  content: "/preview.jpg",
-},
-      { name: "twitter:title", content: "Shaheen OP & Alshida — 08.08.2026" },
+        property: "og:type",
+        content: "website",
+      },
+
+      {
+        property: "og:site_name",
+        content: "Shaheen OP & Alshida Wedding",
+      },
+
+      {
+        property: "og:title",
+        content:
+          "Shaheen OP & Alshida | Royal Wedding Invitation",
+      },
+
+      {
+        property: "og:description",
+        content:
+          "With the blessings of our families, we invite you to witness our special day. A royal crimson wedding celebration awaits on 8 August 2026 at Nambiyath Auditorium.",
+      },
+
+      {
+        property: "og:image",
+        content:
+          "https://redroyalwedding.vercel.app/real.jpg",
+      },
+
+      {
+        property: "og:image:alt",
+        content:
+          "Shaheen OP & Alshida Royal Crimson Wedding Invitation",
+      },
+
+      {
+        property: "og:image:width",
+        content: "1200",
+      },
+
+      {
+        property: "og:image:height",
+        content: "630",
+      },
+
+      {
+        property: "og:image:type",
+        content: "image/jpeg",
+      },
+
+      {
+        property: "og:url",
+        content:
+          "https://redroyalwedding.vercel.app/",
+      },
+
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+
+      {
+        name: "twitter:title",
+        content:
+          "Shaheen OP & Alshida | Royal Wedding Invitation",
+      },
+
       {
         name: "twitter:description",
-        content: "Shaheen OP & Alshida ·.",
+        content:
+          "A royal crimson wedding celebration crafted with love, tradition and elegance.",
+      },
+
+      {
+        name: "twitter:image",
+        content:
+          "https://redroyalwedding.vercel.app/real.jpg",
+      },
+
+      {
+        name: "twitter:image:alt",
+        content:
+          "Shaheen OP & Alshida Royal Wedding Invitation",
       },
     ],
   }),
+
   component: CrimsonLoom,
 });
 
