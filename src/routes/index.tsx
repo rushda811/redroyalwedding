@@ -303,11 +303,11 @@ if (expired) {
                 شاهين &amp; الشيدا
               </span>
               <span className="display-xl mt-6 text-[clamp(1.8rem,7vw,4.4rem)]">
-                Shaheen OP
+                Alshida
               </span>
               <span className="script gold-text my-1 text-[clamp(1.6rem,4vw,2.4rem)]">و</span>
               <span className="display-xl text-[clamp(1.8rem,7vw,4.4rem)] font-light italic">
-                Alshida
+                Shaheen OP
               </span>
             </h1>
           </Reveal>
