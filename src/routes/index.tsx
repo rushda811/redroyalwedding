@@ -145,13 +145,14 @@ const couple = [
     ar: "العريس",
     arName: "شاهين",
     name: "Shaheen OP",
-   
+    lines: [],
   },
   {
     role: "The Bride",
     ar: "العروس",
     arName: "الشيدا",
     name: "Alshida",
+    lines: [],
   },
 ];
 
@@ -484,12 +485,12 @@ function CrimsonLoom() {
                 Finding the Hall
               </h2>
               <div className="mt-8 h-px w-24 bg-gold" />
-              <p className="mt-8 font-serif text-lg font-light leading-relaxed text-foreground/80">
-                Enter a place where memories are woven and celebrations come alive. 
-Follow the path to our chosen venue, where golden lights, heartfelt prayers, 
-and the warmth of our families await you. We look forward to welcoming you 
-through the doors of our special evening.
-              </p>
+            <p className="mt-8 font-serif text-lg font-light leading-relaxed text-foreground/80">
+  Located at Nambiyath Auditorium, our celebration awaits surrounded by
+  warmth, blessings, and the presence of our loved ones. Follow the map
+  to join us for an unforgettable evening filled with happiness, prayers,
+  and beautiful memories.
+</p>
 
               <a
                 href={MAPS_URL}
