@@ -4,10 +4,9 @@ import { motion, AnimatePresence } from "motion/react";
 import flowerDesign from "@/assets/c.jpg";
 
 
-
 export const TIDE_EVENT = "loom:open";
 
-const OPEN_TIME = 3200;
+const OPEN_TIME = 6000;
 
 
 
@@ -23,12 +22,17 @@ function handleOpen(){
 if(open) return;
 
 
-setOpen(true);
-
-
 window.dispatchEvent(
-new Event("loom:music")
+  new Event("loom:music")
 );
+
+
+// small anticipation pause
+setTimeout(()=>{
+
+  setOpen(true);
+
+},250);
 
 
 
@@ -37,7 +41,9 @@ setTimeout(()=>{
 setVisible(false);
 document.body.style.overflow="";
 
-}, OPEN_TIME + 100);
+}, OPEN_TIME + 500);
+
+
 }
 
 
@@ -53,9 +59,7 @@ document.body.style.overflow="";
 
 }
 
-
 },[]);
-
 
 
 
@@ -63,13 +67,11 @@ return(
 
 <AnimatePresence>
 
-
 {
 
 visible &&
 
 <motion.div
-
 
 className="
 fixed
@@ -77,12 +79,9 @@ inset-0
 z-[9999]
 overflow-hidden
 cursor-pointer
-bg-transparent
 "
 
-
 onClick={handleOpen}
-
 
 
 exit={{
@@ -90,7 +89,8 @@ exit={{
 opacity:0,
 
 transition:{
-duration:.4
+duration:0.8,
+ease:[0.22,1,0.36,1]
 }
 
 }}
@@ -99,15 +99,9 @@ duration:.4
 
 
 
-
-{/* ======================
-        LEFT CURTAIN
-====================== */}
-
-
+{/* LEFT CURTAIN */}
 
 <motion.div
-
 
 className="
 absolute
@@ -118,26 +112,39 @@ w-1/2
 z-20
 "
 
-
 style={{
-  perspective:"1400px",
-  transformStyle:"preserve-3d"
+
+perspective:"1800px",
+
+transformStyle:"preserve-3d",
+
+transformOrigin:"left center"
+
 }}
+
 
 animate={{
-  x: open ? "-115%" : "0%",
-  rotateY: open ? -14 : 0
+
+x:open ? "-120%" : "0%",
+
+rotateY:open ? -22 : 0
+
 }}
 
+
+
 transition={{
-  duration: OPEN_TIME / 1000,
-  ease:[0.16,1,0.3,1]
+
+duration:OPEN_TIME / 1000,
+
+ease:[0.65,0,0.35,1]
+
 }}
+
 >
 
 
 <LuxuryCurtain/>
-
 
 </motion.div>
 
@@ -145,12 +152,7 @@ transition={{
 
 
 
-
-
-{/* ======================
-        RIGHT CURTAIN
-====================== */}
-
+{/* RIGHT CURTAIN */}
 
 
 <motion.div
@@ -166,29 +168,40 @@ z-20
 "
 
 
-
 style={{
-  perspective:"1400px",
-  transformStyle:"preserve-3d"
+
+perspective:"1800px",
+
+transformStyle:"preserve-3d",
+
+transformOrigin:"right center"
+
 }}
+
 
 
 animate={{
-  x: open ? "115%" : "0%",
-  rotateY: open ? 14 : 0
+
+x:open ? "120%" : "0%",
+
+rotateY:open ? 22 : 0
+
 }}
+
+
 
 transition={{
-  duration: OPEN_TIME / 1000,
-  ease:[0.16,1,0.3,1]
-}}
 
+duration:OPEN_TIME / 1000,
+
+ease:[0.65,0,0.35,1]
+
+}}
 
 >
 
 
 <LuxuryCurtain/>
-
 
 </motion.div>
 
@@ -197,14 +210,7 @@ transition={{
 
 
 
-
-
-
-{/* ======================
-          CENTER TEXT
-====================== */}
-
-
+{/* CENTER CONTENT */}
 
 
 <AnimatePresence>
@@ -232,17 +238,20 @@ text-[#f8e8cf]
 "
 
 
-
 exit={{
 
 opacity:0,
 
-scale:1.03,
+scale:1.04,
 
-filter:"blur(3px)",
+filter:"blur(6px)",
 
 transition:{
-duration:.45
+
+duration:0.8,
+
+ease:[0.22,1,0.36,1]
+
 }
 
 }}
@@ -257,6 +266,7 @@ duration:.45
 initial={{
 
 opacity:0,
+
 y:25
 
 }}
@@ -265,17 +275,22 @@ y:25
 animate={{
 
 opacity:1,
+
 y:0
 
 }}
 
 
-transition={{
-duration:.8,
-delay:.3,
-ease:[0.22,1,0.36,1]
-}}
 
+transition={{
+
+duration:1,
+
+delay:.5,
+
+ease:[0.22,1,0.36,1]
+
+}}
 
 
 className="
@@ -283,7 +298,6 @@ tracking-[0.6em]
 text-sm
 text-[#e7c36a]
 "
-
 
 >
 
@@ -297,28 +311,42 @@ text-[#e7c36a]
 
 
 
-
 <motion.h1
 
 
 initial={{
-  opacity:0,
-  y:35,
-  scale:.96
+
+opacity:0,
+
+y:45,
+
+scale:.95
+
 }}
+
+
 
 animate={{
-  opacity:1,
-  y:0,
-  scale:1
+
+opacity:1,
+
+y:0,
+
+scale:1
+
 }}
+
+
 
 transition={{
-  duration:1.1,
-  delay:0.8,
-  ease:[0.22,1,0.36,1]
-}}
 
+duration:1.5,
+
+delay:1,
+
+ease:[0.22,1,0.36,1]
+
+}}
 
 
 className="
@@ -328,7 +356,6 @@ text-5xl
 md:text-8xl
 leading-tight
 "
-
 
 
 >
@@ -356,11 +383,7 @@ italic
 Shaheen OP
 
 
-
 </motion.h1>
-
-
-
 
 
 
@@ -385,12 +408,14 @@ opacity:1
 }}
 
 
+
 transition={{
 
-delay:2.4
+delay:2.6,
+
+duration:1
 
 }}
-
 
 
 className="
@@ -411,20 +436,12 @@ text-sm
 
 
 
-
-
 <motion.p
 
 
 animate={{
 
-opacity:[
-
-0.3,
-1,
-0.3
-
-]
+opacity:[0.35,1,0.35]
 
 }}
 
@@ -432,11 +449,11 @@ opacity:[
 
 transition={{
 
-duration:2.5,
+duration:2.8,
+
 repeat:Infinity
 
 }}
-
 
 
 className="
@@ -446,11 +463,9 @@ text-xs
 text-[#e7c36a]
 "
 
-
 >
 
 ✦ TOUCH TO OPEN ✦
-
 
 </motion.p>
 
@@ -458,24 +473,18 @@ text-[#e7c36a]
 
 </motion.div>
 
-
 }
 
 
 </AnimatePresence>
-
-
 
 
 
 </motion.div>
 
-
 }
 
-
 </AnimatePresence>
-
 
 )
 
@@ -485,15 +494,10 @@ text-[#e7c36a]
 
 
 
-
-
-
-
 function LuxuryCurtain(){
 
 
 return(
-
 
 <div
 
@@ -506,7 +510,6 @@ overflow-hidden
 "
 
 
-
 style={{
 
 
@@ -516,11 +519,11 @@ linear-gradient(
 
 90deg,
 
-rgba(130,0,25,.95),
+rgba(90,0,18,.98),
 
-rgba(210,25,65,.45),
+rgba(220,30,70,.55),
 
-rgba(130,0,25,.95)
+rgba(90,0,18,.98)
 
 ),
 
@@ -529,37 +532,29 @@ url(${flowerDesign})
 `,
 
 
-
 backgroundSize:"cover",
 
 backgroundPosition:"center",
 
 
-
 boxShadow:
-
-"inset 0 0 180px rgba(60,0,15,.7)"
-
+"inset 0 0 220px rgba(40,0,10,.85)"
 
 }}
-
-
 
 >
 
 
 
+
 {/* Velvet folds */}
 
-
 <div
-
 
 className="
 absolute
 inset-0
 "
-
 
 style={{
 
@@ -571,25 +566,22 @@ repeating-linear-gradient(
 
 90deg,
 
-rgba(80,0,15,.55),
+rgba(40,0,10,.65),
 
-rgba(255,255,255,.12) 35px,
+rgba(255,255,255,.12) 40px,
 
-rgba(90,0,20,.55) 80px,
+rgba(80,0,20,.7) 90px,
 
-rgba(255,255,255,.08) 120px
+rgba(255,255,255,.08) 140px
 
 )
 
 `,
 
 
-opacity:.65
-
+opacity:.7
 
 }}
-
-
 
 />
 
@@ -597,33 +589,25 @@ opacity:.65
 
 
 
-
-{/* Golden reflection */}
-
+{/* Gold shine */}
 
 <div
-
 
 className="
 absolute
 inset-0
 "
 
-
 style={{
-
 
 background:
 
-"linear-gradient(90deg,transparent,rgba(240,200,100,.35),transparent)",
+"linear-gradient(90deg,transparent,rgba(240,200,100,.45),transparent)",
 
 
-filter:"blur(25px)"
-
+filter:"blur(35px)"
 
 }}
-
-
 
 />
 
@@ -631,40 +615,29 @@ filter:"blur(25px)"
 
 
 
-
-{/* Luxury shadow edges */}
-
+{/* Dark luxury edges */}
 
 <div
-
 
 className="
 absolute
 inset-0
 "
 
-
-
 style={{
 
 
 background:
 
-"radial-gradient(circle,transparent 35%,rgba(80,0,20,.7))"
-
-
+"radial-gradient(circle,transparent 30%,rgba(50,0,15,.8))"
 
 }}
-
-
 
 />
 
 
 
 </div>
-
-
 
 )
 
