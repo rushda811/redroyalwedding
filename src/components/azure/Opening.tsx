@@ -1,152 +1,161 @@
-import { useCallback, useEffect, useState } from "react";
-import { Divider, ArabesqueIcon, MedallionIcon } from "./LineArt";
-import { Atmosphere } from "./Atmosphere";
-import { MUSIC_EVENT } from "./Music";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+
 
 export const TIDE_EVENT = "loom:open";
 
-/** Length of the seal-break + iris reveal. */
-const OPEN_MS = 2200;
+const OPEN_TIME = 2600;
 
-/**
- * The invitation seal. A deep-crimson carpet field lit like a lantern hall,
- * with a woven gold medallion at its centre. On touch the medallion breaks
- * open: girih rings ripple out, saffron light blooms, the song begins, and
- * the panel irises open to hand the guest the invitation.
- */
 export function Opening() {
-  const [visible, setVisible] = useState(true);
-  const [opening, setOpening] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const open = useCallback(() => {
-    window.dispatchEvent(new Event(MUSIC_EVENT));
-    setOpening((o) => {
-      if (o) return o;
-      window.setTimeout(() => {
-        setVisible(false);
-        setOpening(false);
-      }, OPEN_MS);
-      return true;
-    });
-  }, []);
+  const handleOpen = () => {
+    if (open) return;
+
+    setOpen(true);
+    window.dispatchEvent(new Event("loom:open"));
+
+    setTimeout(() => {
+      document.body.style.overflow = "";
+    }, OPEN_TIME);
+  };
 
   useEffect(() => {
-    const replay = () => {
-      setOpening(false);
-      setVisible(true);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
     };
-    window.addEventListener(TIDE_EVENT, replay);
-    return () => window.removeEventListener(TIDE_EVENT, replay);
   }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = visible ? "hidden" : "";
-    return () => void (document.body.style.overflow = "");
-  }, [visible]);
-
-  if (!visible) return null;
 
   return (
-    <div
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && open()}
-      aria-label="Open the invitation"
-      className={`fixed inset-0 z-[80] cursor-pointer touch-manipulation overflow-hidden ${
-        opening ? "iris-open" : ""
-      }`}
-    >
-      {/* deep carpet field */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(120% 90% at 50% 42%, oklch(0.4 0.16 27) 0%, oklch(0.3 0.125 25) 45%, oklch(0.2 0.085 24) 100%)",
-        }}
-      />
-      {/* woven lattice + lamplight */}
-      <div className="girih pointer-events-none absolute inset-0 opacity-[0.5]" aria-hidden />
-      <div className="lamplight pointer-events-none absolute inset-0 opacity-[0.34]" aria-hidden />
-      <div
-        className="lamplight-slow pointer-events-none absolute inset-0 opacity-[0.22]"
-        aria-hidden
-      />
-      <Atmosphere count={16} seed={7} />
-      <div className="grain pointer-events-none absolute inset-0 opacity-60" />
-      <div className="vignette pointer-events-none absolute inset-0" />
+    <AnimatePresence>
+      {!open && (
+        <motion.div
+          className="fixed inset-0 z-[999] flex cursor-pointer items-center justify-center overflow-hidden"
+          onClick={handleOpen}
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+        >
 
-      {/* the bloom of light released by the medallion */}
-      <div
-        className={`pointer-events-none absolute left-1/2 top-1/2 h-[42vmax] w-[42vmax] -translate-x-1/2 -translate-y-1/2 rounded-full ${
-          opening ? "bloom-burst" : "bloom-idle"
-        }`}
-        style={{
-          background:
-            "radial-gradient(circle, oklch(0.94 0.1 84 / 0.5) 0%, oklch(0.8 0.13 62 / 0.24) 32%, transparent 68%)",
-        }}
-        aria-hidden
-      />
+          {/* Velvet background */}
+          <div className="absolute inset-0 bg-[#3b0712]" />
 
-      {/* invitation copy + seal */}
-      <div
-        className={`relative flex h-full flex-col items-center justify-center px-6 text-center text-cream transition-all duration-[900ms] ease-out ${
-          opening ? "scale-[1.08] opacity-0" : "opacity-100"
-        }`}
-      >
-        <div className="relative flex flex-col items-center">
-          <p className="arabic text-[clamp(1.1rem,3vw,1.5rem)] text-gold-soft">
-            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم
-          </p>
+          {/* Golden light behind curtains */}
+          <motion.div
+            className="absolute left-1/2 top-1/2 h-[80vh] w-[40vw] -translate-x-1/2 -translate-y-1/2 rounded-full"
+            animate={{
+              opacity: [0.25, 0.55, 0.25],
+              scale: [0.9, 1.1, 0.9],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+            }}
+            style={{
+              background:
+                "radial-gradient(circle, rgba(255,210,120,.45), transparent 70%)",
+            }}
+          />
 
-          <p className="arabic-display gold-text mt-6 text-[clamp(2.6rem,8vw,4.8rem)] leading-none">
-            دعوة زفاف
-          </p>
 
-          <h2 className="display-xl mt-6 text-[clamp(1.4rem,4.2vw,2.5rem)] text-cream">
-            Shaheen OP &amp; Alshida
-          </h2>
+          {/* LEFT CURTAIN */}
+          <motion.div
+            className="absolute left-0 top-0 h-full w-1/2"
+            animate={{ x: "-105%" }}
+            transition={{
+              duration: 2.6,
+              ease: [0.77, 0, 0.18, 1],
+            }}
+          >
+            <CurtainSide side="left" />
+          </motion.div>
 
-          <div className="mt-7 text-gold-soft">
-            <Divider>
-              <ArabesqueIcon className="h-5 w-24" />
-            </Divider>
-          </div>
 
-          <p className="label-line mt-7 text-[0.85rem] font-semibold tracking-[0.34em] text-cream">
-            08 · 08 · 2026
-          </p>
+          {/* RIGHT CURTAIN */}
+          <motion.div
+            className="absolute right-0 top-0 h-full w-1/2"
+            animate={{ x: "105%" }}
+            transition={{
+              duration: 2.6,
+              ease: [0.77, 0, 0.18, 1],
+            }}
+          >
+            <CurtainSide side="right" />
+          </motion.div>
 
-          {/* the medallion seal */}
-          <div className="relative mt-14 flex h-36 w-36 items-center justify-center">
-            <span
-              className={`absolute inset-0 rounded-full border border-gold/45 ${
-                opening ? "ring-out" : "ring-pulse"
-              }`}
-            />
-            <span
-              className={`absolute inset-3 rounded-full border border-gold/30 ${
-                opening ? "ring-out-2" : "ring-pulse-2"
-              }`}
-            />
-            <span
-              className="seal-face relative flex h-24 w-24 items-center justify-center rounded-full text-gold"
-              style={{
-                background:
-                  "radial-gradient(circle at 34% 28%, oklch(0.9 0.1 88 / 0.34), oklch(0.6 0.14 50 / 0.18) 58%, oklch(0.3 0.1 26 / 0.12) 100%)",
+
+          {/* Text */}
+          <motion.div
+            className="relative z-10 text-center text-[#f8ead0]"
+            exit={{
+              opacity: 0,
+              scale: 1.15,
+            }}
+            transition={{ duration: 1 }}
+          >
+            <p className="mb-8 text-sm tracking-[0.5em]">
+              بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم
+            </p>
+
+            <h1 className="font-serif text-5xl md:text-7xl">
+              Shaheen OP
+              <br />
+              <span className="italic">&</span>
+              <br />
+              Alshida
+            </h1>
+
+            <p className="mt-8 tracking-[0.4em]">
+              08 · 08 · 2026
+            </p>
+
+            <motion.p
+              className="mt-14 text-sm tracking-[0.45em]"
+              animate={{
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
               }}
             >
-              <span className="seal-sheen absolute inset-0 rounded-full" />
-              <MedallionIcon className="h-11 w-11" />
-            </span>
-          </div>
+              ✦ TOUCH TO OPEN ✦
+            </motion.p>
+          </motion.div>
 
-          <p className="arabic mt-8 text-lg text-gold-soft">المس الختم لفتح الدعوة</p>
-          <p className="label-line mt-2 text-[0.76rem] font-semibold tracking-[0.36em] text-cream/90">
-            Touch the seal to open
-          </p>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+
+function CurtainSide({ side }: { side: "left" | "right" }) {
+  return (
+    <div
+      className={`h-full w-full ${
+        side === "left"
+          ? "origin-right"
+          : "origin-left"
+      }`}
+      style={{
+        background: `
+          repeating-linear-gradient(
+            90deg,
+            #24030a 0px,
+            #6b1020 35px,
+            #3b0712 80px,
+            #7d1628 120px,
+            #28040b 160px
+          )
+        `,
+        boxShadow:
+          side === "left"
+            ? "inset -40px 0 80px rgba(0,0,0,.7)"
+            : "inset 40px 0 80px rgba(0,0,0,.7)",
+      }}
+    />
   );
 }
