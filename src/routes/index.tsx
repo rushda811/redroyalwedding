@@ -62,7 +62,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "With the blessings of our families, we invite you to witness our special day. A royal crimson wedding celebration awaits on 8 August 2026 at Nambiyath Auditorium.",
+          "With the blessings of our families, we invite you to witness our special day.  wedding celebration awaits on 8 August 2026 at Nambiyath Auditorium.",
       },
 
       {
