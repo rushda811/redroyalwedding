@@ -141,21 +141,12 @@ const itinerary = [
 
 const couple = [
   {
-    role: "The Groom",
-    ar: "العريس",
-    arName: "شاهين",
-    name: "Shaheen OP",
-    lines: [],
+    name:"Shaheen OP"
   },
   {
-    role: "The Bride",
-    ar: "العروس",
-    arName: "الشيدا",
-    name: "Alshida",
-    lines: [],
-  },
+    name:"Alshida"
+  }
 ];
-
 function CrimsonLoom() {
   const scroll = useParallax();
 
@@ -370,89 +361,212 @@ function CrimsonLoom() {
       />
 
       {/* ————————————————— THE COUPLE ————————————————— */}
-      <section
-        id="couple"
-        className="weave relative overflow-hidden py-28 sm:py-40"
-        style={{ background: "var(--gradient-pearl)" }}
-      >
-        <Atmosphere count={10} seed={23} />
+<section
+  id="couple"
+  className="relative overflow-hidden py-32 sm:py-44"
+  style={{ background: "var(--gradient-cream)" }}
+>
 
-        <div className="relative mx-auto max-w-6xl px-6">
-          <Reveal>
-            <div className="text-center">
-              <p className="eyebrow text-crimson/75">Chapter Two</p>
-              <p className="arabic-display mt-4 text-[clamp(1.6rem,4.6vw,2.6rem)] text-crimson">
-                العريس والعروس
-              </p>
-              <h2 className="display-xl mt-4 text-[clamp(1.6rem,4.4vw,3rem)] text-crimson-deep">
-                The Groom &amp; The Bride
-              </h2>
-              <div className="mt-9 flex justify-center">
-                <Divider>
-                  <RingsIcon className="h-6 w-6" />
-                </Divider>
-              </div>
-            </div>
-          </Reveal>
+  <Atmosphere count={12} seed={33} />
 
-          <div className="mt-20 grid grid-cols-1 gap-10 lg:grid-cols-2">
-            {couple.map((p, i) => (
-              <Reveal key={p.name} delay={i * 160}>
-                <article className="card-lux flex h-full flex-col gap-8 p-7 sm:flex-row sm:p-9">
-                  <div className="frame-gold relative shrink-0 self-start">
-                    <img
-                      src={p.portrait}
-                      alt={`${p.role}, ${p.name}`}
-                      loading="lazy"
-                      width={912}
-                      height={1200}
-                      className="film-tint arch-mask aspect-[3/4] w-full max-w-[13rem] object-cover sm:w-44"
-                    />
-                  </div>
+  {/* background ornament */}
+  <MedallionIcon className="pointer-events-none absolute left-1/2 top-20 h-[35rem] w-[35rem] -translate-x-1/2 text-crimson/5" />
 
-                  <div className="min-w-0">
-                    <p className="eyebrow text-gold">{p.role}</p>
-                    <p className="arabic mt-1 text-xl text-crimson/80">{p.ar}</p>
-                    <p className="arabic-display mt-3 text-[clamp(1.8rem,4vw,2.4rem)] text-crimson-deep">
-                      {p.arName}
-                    </p>
-                    <h3 className="mt-2 font-display text-xl uppercase tracking-[0.16em] text-crimson-deep">
-                      {p.name}
-                    </h3>
-                    <p className="mt-3 font-serif text-base font-light italic text-foreground/70">
-                      {p.lineage}
-                    </p>
-                    <span className="gold-rule mt-6 block w-20" />
+  <div className="relative z-10 mx-auto max-w-6xl px-6">
 
-                    <dl className="mt-6 flex flex-col gap-5">
-                      {p.lines.map(([k, v]) => (
-                        <div key={k}>
-                          <dt className="eyebrow text-crimson/60">{k}</dt>
-                          <dd className="mt-2 font-serif text-lg font-light leading-snug text-crimson-deep">
-                            {v}
-                          </dd>
-                        </div>
-                      ))}
-                    </dl>
+    <Reveal>
+      <div className="text-center">
 
-                    <p className="arabic mt-7 text-xl leading-relaxed text-crimson/85">
-                      {p.note}
-                    </p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
+        <p className="eyebrow text-crimson/70">
+          The Beginning of Forever
+        </p>
+
+        <h2 className="display-xl mt-6 text-crimson-deep text-[clamp(2rem,5vw,3.5rem)]">
+          Shaheen & Alshida
+        </h2>
+
+        <div className="mt-8 flex justify-center">
+          <Divider>
+            <RingsIcon className="h-7 w-7 text-gold" />
+          </Divider>
+        </div>
+
+      </div>
+    </Reveal>
+
+
+    <div className="mt-24 grid grid-cols-1 items-center gap-16 md:grid-cols-2">
+
+
+      {/* GROOM */}
+      <Reveal delay={150}>
+        <div className="group text-center">
+
+          <div className="relative mx-auto max-w-sm">
+
+            <div className="
+              absolute -inset-5
+              border border-gold/50
+              rounded-t-full
+            "/>
+
+
+            <img
+              src={groomPortrait}
+              alt="Shaheen OP"
+              className="
+              relative
+              aspect-[3/4]
+              w-full
+              object-cover
+              rounded-t-full
+              film-tint
+              "
+            />
+
+
+            <div className="
+              absolute inset-0
+              rounded-t-full
+              bg-gradient-to-t
+              from-crimson-deep/40
+              to-transparent
+            "/>
+
           </div>
 
-          <Reveal delay={260}>
-            <p className="arabic mx-auto mt-20 max-w-3xl text-center text-[clamp(1.3rem,3vw,2rem)] text-crimson-deep/90">
-              «بارك اللهُ لكما وبارك عليكما وجمع بينكما في خير»
-            </p>
-          </Reveal>
+
+          <p className="mt-10 eyebrow text-gold">
+            THE GROOM
+          </p>
+
+
+          <h3 className="
+            mt-4
+            font-display
+            text-4xl
+            text-crimson-deep
+          ">
+            Shaheen OP
+          </h3>
+
+
+          <p className="
+            mt-3
+            font-serif
+            italic
+            text-crimson/70
+          ">
+            A new chapter begins
+          </p>
+
+
         </div>
-      </section>
+      </Reveal>
 
 
+
+      {/* BRIDE */}
+      <Reveal delay={300}>
+        <div className="group text-center">
+
+          <div className="relative mx-auto max-w-sm">
+
+            <div className="
+              absolute -inset-5
+              border border-gold/50
+              rounded-t-full
+            "/>
+
+
+            <img
+              src={bridePortrait}
+              alt="Alshida"
+              className="
+              relative
+              aspect-[3/4]
+              w-full
+              object-cover
+              rounded-t-full
+              film-tint
+              "
+            />
+
+
+            <div className="
+              absolute inset-0
+              rounded-t-full
+              bg-gradient-to-t
+              from-crimson-deep/40
+              to-transparent
+            "/>
+
+          </div>
+
+
+          <p className="mt-10 eyebrow text-gold">
+            THE BRIDE
+          </p>
+
+
+          <h3 className="
+            mt-4
+            font-display
+            text-4xl
+            text-crimson-deep
+          ">
+            Alshida
+          </h3>
+
+
+          <p className="
+            mt-3
+            font-serif
+            italic
+            text-crimson/70
+          ">
+            The heart of this story
+          </p>
+
+
+        </div>
+      </Reveal>
+
+
+    </div>
+
+
+    <Reveal delay={500}>
+      <div className="mt-24 text-center">
+
+        <p className="
+          arabic-display
+          text-[clamp(1.5rem,4vw,2.4rem)]
+          text-crimson
+        ">
+          وَجَعَلْنَا بَيْنَكُم مَوَدَّةً وَرَحْمَةً
+        </p>
+
+
+        <p className="
+          mt-5
+          max-w-xl
+          mx-auto
+          font-serif
+          text-lg
+          italic
+          text-foreground/70
+        ">
+          "And He placed between you affection and mercy."
+        </p>
+
+      </div>
+    </Reveal>
+
+
+  </div>
+
+</section>
       {/* ————————————————— THE VENUE ————————————————— */}
       <section
         id="venue"
