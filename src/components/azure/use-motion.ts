@@ -1,48 +1,110 @@
 import { useEffect, useRef, useState } from "react";
 
-/** Reveals an element once it scrolls into view. */
-export function useReveal<T extends HTMLElement = HTMLDivElement>(threshold = 0.18) {
+
+export function useReveal<T extends HTMLElement = HTMLDivElement>() {
+
   const ref = useRef<T | null>(null);
-  const [visible, setVisible] = useState(false);
 
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
+  const [visible,setVisible] = useState(false);
+
+
+  useEffect(()=>{
+
+    const element = ref.current;
+
+    if(!element) return;
+
+
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold, rootMargin: "0px 0px -8% 0px" },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [threshold]);
 
-  return { ref, visible } as const;
+      ([entry])=>{
+
+        if(entry.isIntersecting){
+
+          setVisible(true);
+
+          observer.disconnect();
+
+        }
+
+      },
+
+      {
+        threshold:0.15,
+        rootMargin:"0px 0px -60px 0px",
+      }
+
+    );
+
+
+    observer.observe(element);
+
+
+    return()=>observer.disconnect();
+
+
+  },[]);
+
+
+  return {
+    ref,
+    visible
+  };
+
 }
 
-/** Tracks window scroll offset for parallax layers. */
-export function useParallax() {
-  const [offset, setOffset] = useState(0);
 
-  useEffect(() => {
-    let frame = 0;
-    const onScroll = () => {
+
+
+export function useParallax(){
+
+  const [offset,setOffset] = useState(0);
+
+
+  useEffect(()=>{
+
+    let frame:number;
+
+
+    const handleScroll=()=>{
+
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => setOffset(window.scrollY));
+
+
+      frame=requestAnimationFrame(()=>{
+
+        setOffset(window.scrollY);
+
+      });
+
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
+
+
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      {
+        passive:true
+      }
+    );
+
+
+    return()=>{
+
       cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", onScroll);
+
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+
     };
-  }, []);
+
+
+  },[]);
+
+
 
   return offset;
+
 }

@@ -297,7 +297,7 @@ if (expired) {
             </p>
           </Reveal>
 
-          <Reveal delay={180}>
+          <Reveal>
             <h1 className="mt-8 flex flex-col items-center">
               <span className="arabic-display gold-text text-[clamp(2.6rem,9vw,5.4rem)] leading-tight">
                 شاهين &amp; الشيدا
@@ -312,7 +312,7 @@ if (expired) {
             </h1>
           </Reveal>
 
-          <Reveal delay={340}>
+          <Reveal>
             <div className="mt-10">
               <Divider>
                 <ArabesqueIcon className="h-6 w-28" />
@@ -320,7 +320,7 @@ if (expired) {
             </div>
           </Reveal>
 
-          <Reveal delay={460}>
+          <Reveal>
             <p className="label-line mt-9 text-cream">
               08 · 08 · 2026 &nbsp;—&nbsp; Nambiyath Auditorium
             </p>
@@ -367,7 +367,7 @@ if (expired) {
             </div>
           </Reveal>
 
-          <Reveal delay={180}>
+          <Reveal>
             <div className="mt-14">
               <Countdown />
             </div>
