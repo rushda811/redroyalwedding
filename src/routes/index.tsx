@@ -157,7 +157,37 @@ const itinerary = [
     Icon: RingsIcon,
   },
 ];
+const EXPIRY_DATE = new Date("2026-09-08T23:59:59");
+function WeddingClosed() {
+  return (
+    <div className="min-h-screen bg-crimson-deep flex items-center justify-center px-6">
+      <div className="max-w-2xl text-center text-cream">
+        <p className="arabic text-gold-soft text-xl">
+          الحمد لله
+        </p>
 
+        <h1 className="display-xl mt-6 text-5xl">
+          Thank You
+        </h1>
+
+        <p className="mt-8 text-lg leading-8 text-cream/80">
+          Our wedding celebration has now concluded.
+          Thank you for being part of our most treasured memories.
+        </p>
+
+        <div className="my-10 h-px w-40 mx-auto bg-gold/40" />
+
+        <p className="arabic-display text-3xl text-gold">
+          شاهين و الشيدا
+        </p>
+
+        <p className="mt-4 uppercase tracking-[0.35em] text-sm text-cream/60">
+          With Love & Gratitude
+        </p>
+      </div>
+    </div>
+  );
+}
 const couple = [
   {
     name:"Shaheen OP"
@@ -168,6 +198,11 @@ const couple = [
 ];
 function CrimsonLoom() {
   const scroll = useParallax();
+  const expired = new Date() > EXPIRY_DATE;
+
+if (expired) {
+  return <WeddingClosed />;
+}
 
   return (
     <div id="top" className="grain relative overflow-x-clip bg-background">
