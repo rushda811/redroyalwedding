@@ -241,7 +241,7 @@ function CrimsonLoom() {
               08 · 08 · 2026 &nbsp;—&nbsp; Madinat Jumeirah, Dubai
             </p>
           </Reveal>
-
+</div>
 
         <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3 text-cream/85">
           <span className="eyebrow">Scroll</span>
@@ -590,8 +590,7 @@ function CrimsonLoom() {
         </div>
       </section>
 
-      {/* ————————————————— RSVP ————————————————— */}
-      <RsvpSection />
+    
 
       {/* ————————————————— FOOTER ————————————————— */}
       <footer className="grain relative overflow-hidden bg-crimson-deep py-16 text-cream">
@@ -602,6 +601,19 @@ function CrimsonLoom() {
           <p className="eyebrow text-cream/85">Woven with love · 08 · 08 · 2026</p>
           <span className="gold-rule w-40" />
           <p className="arabic text-lg text-cream/70">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+        </div>
+        <div className="gold-rule mx-auto mt-14 h-px w-48 sm:w-72" />
+
+        <div className="mt-10 flex flex-col items-center text-center">
+          <span className="font-display text-[11px] tracking-[0.5em] text-champagne/90 uppercase sm:text-[12px]">
+            Crafted by
+          </span>
+          <span
+            className="mt-3 font-script text-5xl leading-[1.3] text-gold-gradient sm:text-6xl"
+            style={{ animation: "breathe 6s ease-in-out infinite" }}
+          >
+            Aurelle Vows
+          </span>
         </div>
       </footer>
     </div>
@@ -658,22 +670,5 @@ function QuoteBand({
         </Reveal>
       </div>
     </section>
-  );
-}
-
-<div className="gold-rule mx-auto mt-14 h-px w-48 sm:w-72" />
-
-        <div className="mt-10 flex flex-col items-center text-center">
-          <span className="font-display text-[11px] tracking-[0.5em] text-champagne/90 uppercase sm:text-[12px]">
-            Crafted by
-          </span>
-          <span
-            className="mt-3 font-script text-5xl leading-[1.3] text-gold-gradient sm:text-6xl"
-            style={{ animation: "breathe 6s ease-in-out infinite" }}
-          >
-            Aurelle Vows
-          </span>
-        </div>
- 
   );
 }
