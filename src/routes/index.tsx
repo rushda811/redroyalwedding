@@ -34,24 +34,23 @@ import { useParallax } from "@/components/azure/use-motion";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Shaheen OP & Alshida — Persian Carpet Wedding Invitation" },
+      { title: "Shaheen OP & Alshida" },
       {
         name: "description",
         content:
-          "شاهين وألشيدا — Shaheen OP & Alshida invite you to their wedding on 8 August 2026. A Persian-carpet, crimson-and-cream digital invitation with Arabic calligraphy, countdown and RSVP.",
+          "شاهين وألشيدا — Shaheen OP & Alshida invite you to their wedding on 8 August 2026. ",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:title", content: "Shaheen OP & Alshida — 08.08.2026" },
       {
         property: "og:description",
-        content:
-          "A crimson and cream Persian-carpet wedding invitation. Arabic calligraphy, live countdown and RSVP.",
+       
       },
       { name: "twitter:title", content: "Shaheen OP & Alshida — 08.08.2026" },
       {
         name: "twitter:description",
-        content: "Shaheen OP & Alshida · 8 August 2026 · Qasr Al Warda, Dubai.",
+        content: "Shaheen OP & Alshida ·.",
       },
     ],
   }),
@@ -360,213 +359,7 @@ function CrimsonLoom() {
         offset={scroll}
       />
 
-      {/* ————————————————— THE COUPLE ————————————————— */}
-<section
-  id="couple"
-  className="relative overflow-hidden py-32 sm:py-44"
-  style={{ background: "var(--gradient-cream)" }}
->
 
-  <Atmosphere count={12} seed={33} />
-
-  {/* background ornament */}
-  <MedallionIcon className="pointer-events-none absolute left-1/2 top-20 h-[35rem] w-[35rem] -translate-x-1/2 text-crimson/5" />
-
-  <div className="relative z-10 mx-auto max-w-6xl px-6">
-
-    <Reveal>
-      <div className="text-center">
-
-        <p className="eyebrow text-crimson/70">
-          The Beginning of Forever
-        </p>
-
-        <h2 className="display-xl mt-6 text-crimson-deep text-[clamp(2rem,5vw,3.5rem)]">
-          Shaheen & Alshida
-        </h2>
-
-        <div className="mt-8 flex justify-center">
-          <Divider>
-            <RingsIcon className="h-7 w-7 text-gold" />
-          </Divider>
-        </div>
-
-      </div>
-    </Reveal>
-
-
-    <div className="mt-24 grid grid-cols-1 items-center gap-16 md:grid-cols-2">
-
-
-      {/* GROOM */}
-      <Reveal delay={150}>
-        <div className="group text-center">
-
-          <div className="relative mx-auto max-w-sm">
-
-            <div className="
-              absolute -inset-5
-              border border-gold/50
-              rounded-t-full
-            "/>
-
-
-            <img
-              src={groomPortrait}
-              alt="Shaheen OP"
-              className="
-              relative
-              aspect-[3/4]
-              w-full
-              object-cover
-              rounded-t-full
-              film-tint
-              "
-            />
-
-
-            <div className="
-              absolute inset-0
-              rounded-t-full
-              bg-gradient-to-t
-              from-crimson-deep/40
-              to-transparent
-            "/>
-
-          </div>
-
-
-          <p className="mt-10 eyebrow text-gold">
-            THE GROOM
-          </p>
-
-
-          <h3 className="
-            mt-4
-            font-display
-            text-4xl
-            text-crimson-deep
-          ">
-            Shaheen OP
-          </h3>
-
-
-          <p className="
-            mt-3
-            font-serif
-            italic
-            text-crimson/70
-          ">
-            A new chapter begins
-          </p>
-
-
-        </div>
-      </Reveal>
-
-
-
-      {/* BRIDE */}
-      <Reveal delay={300}>
-        <div className="group text-center">
-
-          <div className="relative mx-auto max-w-sm">
-
-            <div className="
-              absolute -inset-5
-              border border-gold/50
-              rounded-t-full
-            "/>
-
-
-            <img
-              src={bridePortrait}
-              alt="Alshida"
-              className="
-              relative
-              aspect-[3/4]
-              w-full
-              object-cover
-              rounded-t-full
-              film-tint
-              "
-            />
-
-
-            <div className="
-              absolute inset-0
-              rounded-t-full
-              bg-gradient-to-t
-              from-crimson-deep/40
-              to-transparent
-            "/>
-
-          </div>
-
-
-          <p className="mt-10 eyebrow text-gold">
-            THE BRIDE
-          </p>
-
-
-          <h3 className="
-            mt-4
-            font-display
-            text-4xl
-            text-crimson-deep
-          ">
-            Alshida
-          </h3>
-
-
-          <p className="
-            mt-3
-            font-serif
-            italic
-            text-crimson/70
-          ">
-            The heart of this story
-          </p>
-
-
-        </div>
-      </Reveal>
-
-
-    </div>
-
-
-    <Reveal delay={500}>
-      <div className="mt-24 text-center">
-
-        <p className="
-          arabic-display
-          text-[clamp(1.5rem,4vw,2.4rem)]
-          text-crimson
-        ">
-          وَجَعَلْنَا بَيْنَكُم مَوَدَّةً وَرَحْمَةً
-        </p>
-
-
-        <p className="
-          mt-5
-          max-w-xl
-          mx-auto
-          font-serif
-          text-lg
-          italic
-          text-foreground/70
-        ">
-          "And He placed between you affection and mercy."
-        </p>
-
-      </div>
-    </Reveal>
-
-
-  </div>
-
-</section>
       {/* ————————————————— THE VENUE ————————————————— */}
       <section
         id="venue"
