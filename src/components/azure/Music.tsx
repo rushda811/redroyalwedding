@@ -31,7 +31,7 @@ export function Music() {
 
   return (
     <>
-      <audio ref={ref} src={songAsset.url} loop preload="auto" />
+      <audio ref={audioRef} src="/music/birasaha.mp3" loop preload="auto" />
       <button
         type="button"
         aria-label={playing ? "Pause the music" : "Play the music"}
