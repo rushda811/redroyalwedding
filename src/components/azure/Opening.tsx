@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
 export const TIDE_EVENT = "loom:open";
+
 const OPEN_TIME = 3200;
 
 export function Opening() {
@@ -41,7 +42,6 @@ export function Opening() {
             transition: { duration: 1 },
           }}
         >
-
           {/* LEFT CURTAIN */}
           <motion.div
             className="absolute left-0 top-0 h-full w-1/2"
@@ -80,13 +80,20 @@ export function Opening() {
                 exit={{
                   opacity: 0,
                   scale: 1.1,
-                  transition:{duration:1}
+                  transition: {
+                    duration: 1,
+                  },
                 }}
               >
-
                 <motion.p
-                  initial={{opacity:0,y:20}}
-                  animate={{opacity:1,y:0}}
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
                   className="mb-8 text-sm tracking-[0.5em]"
                 >
                   بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم
@@ -94,15 +101,23 @@ export function Opening() {
 
 
                 <motion.h1
-                  initial={{opacity:0,y:30}}
-                  animate={{opacity:1,y:0}}
-                  transition={{delay:.3}}
+                  initial={{
+                    opacity: 0,
+                    y: 30,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.3,
+                  }}
                   className="font-serif text-5xl md:text-7xl"
                 >
                   Shaheen OP
-                  <br/>
+                  <br />
                   <span className="italic">&</span>
-                  <br/>
+                  <br />
                   Alshida
                 </motion.h1>
 
@@ -115,21 +130,19 @@ export function Opening() {
                 <motion.p
                   className="mt-16 text-sm tracking-[0.5em]"
                   animate={{
-                    opacity:[0.3,1,0.3]
+                    opacity: [0.3, 1, 0.3],
                   }}
                   transition={{
-                    duration:2,
-                    repeat:Infinity
+                    duration: 2,
+                    repeat: Infinity,
                   }}
                 >
                   ✦ TOUCH TO OPEN ✦
                 </motion.p>
 
-
               </motion.div>
             )}
           </AnimatePresence>
-
 
         </motion.div>
       )}
@@ -138,90 +151,71 @@ export function Opening() {
 }
 
 
-
 function CurtainSide({
   side,
-}:{
-  side:"left"|"right";
-}){
+}: {
+  side: "left" | "right";
+}) {
+  return (
+    <div
+      className="relative h-full w-full"
+      style={{
+        background: `
+          linear-gradient(
+            90deg,
+            var(--crimson-deep) 0%,
+            var(--crimson) 20%,
+            var(--rose-madder) 45%,
+            var(--crimson) 65%,
+            var(--crimson-deep) 100%
+          )
+        `,
+        boxShadow:
+          side === "left"
+            ? "inset -80px 0 120px rgba(0,0,0,.8)"
+            : "inset 80px 0 120px rgba(0,0,0,.8)",
+      }}
+    >
 
-return (
-<div
-className="relative h-full w-full"
-style={{
-
-background:`
-linear-gradient(
-90deg,
-var(--crimson-deep) 0%,
-var(--crimson) 20%,
-var(--rose-madder) 45%,
-var(--crimson) 65%,
-var(--crimson-deep) 100%
-)
-`,
-
-boxShadow:
-side==="left"
-?
-"inset -80px 0 120px rgba(0,0,0,.8)"
-:
-"inset 80px 0 120px rgba(0,0,0,.8)"
-
-}}
->
-
-
-{/* Velvet folds */}
-
-<div
-className="absolute inset-0"
-style={{
-
-background:`
-repeating-linear-gradient(
-90deg,
-rgba(0,0,0,.55) 0px,
-rgba(255,255,255,.08) 25px,
-rgba(0,0,0,.4) 55px,
-rgba(255,255,255,.12) 80px,
-rgba(0,0,0,.5) 110px
-)
-`,
-
-opacity:.55
-
-}}
-/>
+      {/* Velvet folds */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `
+            repeating-linear-gradient(
+              90deg,
+              rgba(0,0,0,.55) 0px,
+              rgba(255,255,255,.08) 25px,
+              rgba(0,0,0,.4) 55px,
+              rgba(255,255,255,.12) 80px,
+              rgba(0,0,0,.5) 110px
+            )
+          `,
+          opacity: 0.55,
+        }}
+      />
 
 
-{/* Fabric shine */}
-
-<div
-className="absolute inset-0"
-style={{
-
-background:
-"linear-gradient(90deg,transparent,rgba(230,190,90,.22),transparent)"
-
-filter:"blur(35px)"
-
-}}
-/>
+      {/* Fabric shine */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(90deg,transparent,rgba(230,190,90,.22),transparent)",
+          filter: "blur(35px)",
+        }}
+      />
 
 
-{/* Velvet darkness */}
+      {/* Velvet darkness */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle,transparent 30%,rgba(0,0,0,.65) 100%)",
+        }}
+      />
 
-<div
-className="absolute inset-0"
-style={{
-background:
-"radial-gradient(circle,transparent 30%,rgba(0,0,0,.65) 100%)"
-}}
-/>
-
-
-</div>
-)
-
+    </div>
+  );
 }

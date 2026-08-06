@@ -59,7 +59,7 @@ export const Route = createFileRoute("/")({
 });
 
 const MAPS_URL =
-  "https://www.google.com/maps/search/?api=1&query=Madinat%20Jumeirah%2C%20Dubai";
+  "https://maps.app.goo.gl/DKGqEoxW6wSmKAwh9";
 
 const postcards = [
   {
@@ -238,7 +238,7 @@ function CrimsonLoom() {
 
           <Reveal delay={460}>
             <p className="label-line mt-9 text-cream">
-              08 · 08 · 2026 &nbsp;—&nbsp; Madinat Jumeirah, Dubai
+              08 · 08 · 2026 &nbsp;—&nbsp; Nambiyath Auditorium
             </p>
           </Reveal>
 </div>
@@ -293,7 +293,7 @@ function CrimsonLoom() {
             <div className="mt-12 flex flex-col items-center gap-6">
               <ArabesqueIcon className="h-6 w-44 text-gold/65" />
               <p className="label-line text-cream/85">
-                Saturday, 8 August 2026 · 18:30 · Madinat Jumeirah, Dubai
+                Saturday, 8 August 2026 · 11:30 · Nambiyath Auditorium
               </p>
             </div>
           </Reveal>
@@ -357,7 +357,7 @@ function CrimsonLoom() {
                 {[
                   ["The Date", "التاريخ", "Saturday, 8 August 2026"],
                   ["The Hour", "الساعة", "Golden hour, 18:30"],
-                  ["The Place", "المكان", "Madinat Jumeirah, Dubai"],
+                  ["The Place", "المكان", "Nambiyath Auditorium"],
                 ].map(([k, ar, v]) => (
                   <div key={k} className="card-lux frame-gold px-5 py-7">
                     <dt className="eyebrow text-[0.78rem] font-semibold tracking-[0.3em] text-crimson-deep">
