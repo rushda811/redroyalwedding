@@ -47,6 +47,26 @@ export const Route = createFileRoute("/")({
         property: "og:description",
        
       },
+      {
+  property: "og:image",
+  content: "/preview.jpg",
+},
+{
+  property: "og:image:width",
+  content: "1200",
+},
+{
+  property: "og:image:height",
+  content: "630",
+},
+{
+  property: "og:image:type",
+  content: "image/jpeg",
+},
+{
+  name: "twitter:image",
+  content: "/preview.jpg",
+},
       { name: "twitter:title", content: "Shaheen OP & Alshida — 08.08.2026" },
       {
         name: "twitter:description",
