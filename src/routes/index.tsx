@@ -145,30 +145,13 @@ const couple = [
     ar: "العريس",
     arName: "شاهين",
     name: "Shaheen OP",
-    portrait: groomPortrait,
-    lineage: "Son of Ayesha & Abdul Rahman",
-    lines: [
-      ["Family Residence", "Villa 14, Al Warqa 3, Dubai, United Arab Emirates"],
-      ["Ancestral Home", "Puthiyaparambil House, Kozhikode, Kerala, India"],
-      ["Reply To", "shaheen@crimsonloom.wedding"],
-      ["Telephone", "+971 4 555 0142"],
-    ],
-    note: "يقول إنّ الحكاية بدأت بفنجان قهوة",
+   
   },
   {
     role: "The Bride",
     ar: "العروس",
     arName: "الشيدا",
     name: "Alshida",
-    portrait: bridePortrait,
-    lineage: "Daughter of Fathima & Yousuf",
-    lines: [
-      ["Family Residence", "Beit Al Nakheel, Jumeirah 2, Dubai, United Arab Emirates"],
-      ["Ancestral Home", "Al Mahatta Street, Sharjah, United Arab Emirates"],
-      ["Reply To", "alshida@crimsonloom.wedding"],
-      ["Telephone", "+971 4 555 0198"],
-    ],
-    note: "تحفظ أوّل رسالة منه حتى اليوم",
   },
 ];
 
@@ -356,7 +339,7 @@ function CrimsonLoom() {
               <dl className="grid w-full grid-cols-1 gap-8 sm:grid-cols-3">
                 {[
                   ["The Date", "التاريخ", "Saturday, 8 August 2026"],
-                  ["The Hour", "الساعة", "Golden hour, 18:30"],
+                  ["The Hour", "الساعة", "Golden hour, 11:30"],
                   ["The Place", "المكان", "Nambiyath Auditorium"],
                 ].map(([k, ar, v]) => (
                   <div key={k} className="card-lux frame-gold px-5 py-7">
@@ -469,55 +452,6 @@ function CrimsonLoom() {
       </section>
 
 
-
-      {/* ————————————————— ITINERARY ————————————————— */}
-      <section
-        id="itinerary"
-        className="grain relative overflow-hidden py-28 text-cream sm:py-40"
-        style={{ background: "var(--gradient-loom)" }}
-      >
-        <div className="girih pointer-events-none absolute inset-0 opacity-40" aria-hidden />
-        <LightLeak />
-        <Atmosphere count={18} seed={53} />
-
-        <div className="relative mx-auto max-w-5xl px-6">
-          <Reveal>
-            <div className="text-center">
-              <p className="eyebrow text-gold-soft">Chapter Four</p>
-              <p className="arabic-display mt-4 text-[clamp(1.6rem,4.6vw,2.6rem)] text-gold-soft">
-                ثلاثة أيام من الفرح
-              </p>
-              <h2 className="display-xl mt-4 text-[clamp(1.6rem,5vw,3.2rem)]">
-                Three Days of Celebration
-              </h2>
-            </div>
-          </Reveal>
-
-          <div className="mt-20 flex flex-col gap-px">
-            {itinerary.map((item, i) => (
-              <Reveal key={item.day} delay={i * 140}>
-                <article className="group grid grid-cols-1 gap-6 border-t border-cream/15 py-10 transition-colors duration-700 hover:border-gold/70 sm:grid-cols-[auto_11rem_minmax(0,1fr)] sm:items-start sm:gap-10">
-                  <item.Icon className="h-10 w-10 shrink-0 text-gold transition-transform duration-700 group-hover:-translate-y-1" />
-                  <div>
-                    <p className="eyebrow text-gold-soft">{item.day}</p>
-                    <p className="arabic mt-1 text-xl text-cream/90">{item.ar}</p>
-                    <p className="mt-2 font-display text-2xl tracking-widest">{item.date}</p>
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="font-serif text-[clamp(1.4rem,3vw,2rem)] font-light">
-                      {item.title}
-                    </h3>
-                    <p className="mt-4 max-w-xl font-serif text-lg font-light leading-relaxed text-cream/85">
-                      {item.detail}
-                    </p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ————————————————— THE VENUE ————————————————— */}
       <section
         id="venue"
@@ -551,9 +485,10 @@ function CrimsonLoom() {
               </h2>
               <div className="mt-8 h-px w-24 bg-gold" />
               <p className="mt-8 font-serif text-lg font-light leading-relaxed text-foreground/80">
-                Enter through the arched gate at Madinat Jumeirah, follow the waterway past the
-                lanterns, and take the second courtyard on the right — the one laid end to end
-                with crimson carpet. Valet parking from 17:30.
+                Enter a place where memories are woven and celebrations come alive. 
+Follow the path to our chosen venue, where golden lights, heartfelt prayers, 
+and the warmth of our families await you. We look forward to welcoming you 
+through the doors of our special evening.
               </p>
 
               <a
@@ -574,9 +509,7 @@ function CrimsonLoom() {
 
               <dl className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
                 {[
-                  ["Dress", "Traditional formal — silk, gold, cream"],
-                  ["Arrival", "Doors open 17:30, seating by 18:15"],
-                  ["Stay", "Rooms held for guests, 6–9 August"],
+                  ["Arrival", "Doors open 11:30"],
                   ["Gifts", "Your duas and your presence, truly"],
                 ].map(([k, v]) => (
                   <div key={k} className="border-t border-border pt-5">
