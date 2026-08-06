@@ -34,13 +34,13 @@ export const Route = createFileRoute("/")({
   head: () => ({
  meta: [
       {
-        title: "Shaheen OP & Alshida | Wedding Invitation",
+        title: "Alshida & Shaheen OP  | Wedding Invitation",
       },
 
       {
         name: "description",
         content:
-          "You are warmly invited to celebrate the royal wedding of Shaheen OP & Alshida. Join us for a timeless crimson and gold celebration filled with love, blessings and beautiful memories on 8 August 2026.",
+          "You are warmly invited to celebrate the royal wedding of Alshida  & Shaheen OP . Join us for a timeless crimson and gold celebration filled with love, blessings and beautiful memories on 8 August 2026.",
       },
 
       {
@@ -50,13 +50,13 @@ export const Route = createFileRoute("/")({
 
       {
         property: "og:site_name",
-        content: "Shaheen OP & Alshida Wedding",
+        content: "Alshida & Shaheen OP  Wedding",
       },
 
       {
         property: "og:title",
         content:
-          "Shaheen OP & Alshida | Royal Wedding Invitation",
+          "Alshida & Shaheen OP  | Royal Wedding Invitation",
       },
 
       {
@@ -74,7 +74,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:image:alt",
         content:
-          "Shaheen OP & Alshida Royal Crimson Wedding Invitation",
+          "Alshida & Shaheen OP  Royal Crimson Wedding Invitation",
       },
 
       {
@@ -106,7 +106,7 @@ export const Route = createFileRoute("/")({
       {
         name: "twitter:title",
         content:
-          "Shaheen OP & Alshida | Royal Wedding Invitation",
+          "Alshida  & Shaheen OP  | Royal Wedding Invitation",
       },
 
       {
@@ -124,7 +124,7 @@ export const Route = createFileRoute("/")({
       {
         name: "twitter:image:alt",
         content:
-          "Shaheen OP & Alshida Royal Wedding Invitation",
+          "Alshida & Shaheen OP  Royal Wedding Invitation",
       },
     ],
   }),
