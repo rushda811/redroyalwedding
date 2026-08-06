@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
 import flowerDesign from "@/assets/c.jpg";
-import lantern from "@/assets/l.png";
+
 
 
 export const TIDE_EVENT = "loom:open";
@@ -98,106 +98,6 @@ duration:.4
 }}
 
 >
-
-
-
-{/* ======================
-    HANGING LANTERNS
-====================== */}
-
-
-
-<motion.img
-
-src={lantern}
-
-alt="Luxury lantern"
-
-className="
-absolute
-z-50
-left-8
-top-0
-w-48
-md:w-72
-object-contain
-pointer-events-none
-"
-
-
-initial={{
-
-opacity:0,
-y:-40
-
-}}
-
-
-animate={{
-
-opacity:1,
-y:0
-
-}}
-
-
-transition={{
-
-duration:1.5,
-delay:.8
-
-}}
-
-/>
-
-
-
-
-
-<motion.img
-
-src={lantern}
-
-alt="Luxury lantern"
-
-className="
-absolute
-z-50
-right-8
-top-0
-w-32
-md:w-52
-object-contain
-pointer-events-none
-"
-
-
-initial={{
-
-opacity:0,
-y:-40
-
-}}
-
-
-animate={{
-
-opacity:1,
-y:0
-
-}}
-
-
-transition={{
-
-duration:1.5,
-delay:1
-
-}}
-
-/>
-
-
 
 
 
