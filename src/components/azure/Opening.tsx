@@ -307,11 +307,11 @@ background:`
 
 linear-gradient(
 90deg,
-var(--crimson-deep),
+var(--crimson),
 var(--crimson),
 var(--rose-madder),
 var(--crimson),
-var(--crimson-deep)
+var(--crimson)
 )
 
 `,
