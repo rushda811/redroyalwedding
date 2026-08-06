@@ -245,10 +245,10 @@ function WeddingClosed() {
 }
 const couple = [
   {
-    name:"Shaheen OP"
+    name:"Alshida"
   },
   {
-    name:"Alshida"
+    name:"Shaheen OP"
   }
 ];
 function CrimsonLoom() {
