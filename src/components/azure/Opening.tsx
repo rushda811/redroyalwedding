@@ -153,13 +153,11 @@ style={{
 background:`
 linear-gradient(
 90deg,
-#150106 0%,
-#3b0715 15%,
-#7d1630 35%,
-#b52c50 50%,
-#7d1630 65%,
-#3b0715 85%,
-#120104 100%
+var(--crimson-deep) 0%,
+var(--crimson) 20%,
+var(--rose-madder) 45%,
+var(--crimson) 65%,
+var(--crimson-deep) 100%
 )
 `,
 
@@ -191,7 +189,7 @@ rgba(0,0,0,.5) 110px
 )
 `,
 
-opacity:.8
+opacity:.55
 
 }}
 />
@@ -204,7 +202,7 @@ className="absolute inset-0"
 style={{
 
 background:
-"linear-gradient(90deg,transparent,rgba(255,220,170,.25),transparent)",
+"linear-gradient(90deg,transparent,rgba(230,190,90,.22),transparent)"
 
 filter:"blur(35px)"
 

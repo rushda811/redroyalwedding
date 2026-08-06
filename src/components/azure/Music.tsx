@@ -6,34 +6,34 @@ export function Music() {
   const ref = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
 
+  // Start music when curtain is touched
   useEffect(() => {
-    const start = () => {
-      const el = ref.current;
+    const startMusic = () => {
+      const audio = ref.current;
 
-      if (!el) return;
+      if (!audio) return;
 
-      el.volume = 0.65;
+      audio.volume = 0.65;
 
-      el.play()
+      audio
+        .play()
         .then(() => {
           setPlaying(true);
-          console.log("Music started");
         })
         .catch((error) => {
-          console.log("Music failed:", error);
+          console.log("Music autoplay blocked:", error);
+          setPlaying(false);
         });
     };
 
-    window.addEventListener(MUSIC_EVENT, start);
+    window.addEventListener(MUSIC_EVENT, startMusic);
 
     return () => {
-      window.removeEventListener(MUSIC_EVENT, start);
+      window.removeEventListener(MUSIC_EVENT, startMusic);
     };
   }, []);
 
-
   const bars = useMemo(() => [0, 0.18, 0.36, 0.12], []);
-
 
   return (
     <>
@@ -44,27 +44,27 @@ export function Music() {
         preload="auto"
       />
 
-
       <button
         type="button"
-        aria-label={playing ? "Pause the music" : "Play the music"}
+        aria-label={playing ? "Pause music" : "Play music"}
         onClick={() => {
-          const el = ref.current;
+          const audio = ref.current;
 
-          if (!el) return;
+          if (!audio) return;
 
-          if (el.paused) {
-            el.volume = 0.65;
+          if (audio.paused) {
+            audio.volume = 0.65;
 
-            el.play()
-              .then(() => setPlaying(true));
-
+            audio
+              .play()
+              .then(() => setPlaying(true))
+              .catch((error) => console.log(error));
           } else {
-            el.pause();
+            audio.pause();
             setPlaying(false);
           }
         }}
-        className="glass-panel fixed bottom-6 right-5 z-[70] flex h-14 w-14 items-center justify-center rounded-full text-gold"
+        className="glass-panel fixed bottom-6 right-5 z-[70] flex h-14 w-14 items-center justify-center rounded-full text-gold transition-all duration-500 hover:bg-gold/20 sm:bottom-8 sm:right-8"
       >
         <span className="flex h-5 items-end gap-[3px]" aria-hidden>
           {bars.map((delay, i) => (
@@ -76,10 +76,10 @@ export function Music() {
                   : "block w-[3px] bg-current"
               }
               style={{
-                height: `${[10,18,14,20][i]}px`,
-                animationDelay:`${delay}s`,
-                transformOrigin:"bottom",
-                transform: playing ? undefined : "scaleY(.35)"
+                height: `${[10, 18, 14, 20][i]}px`,
+                animationDelay: `${delay}s`,
+                transform: playing ? undefined : "scaleY(0.35)",
+                transformOrigin: "bottom",
               }}
             />
           ))}
